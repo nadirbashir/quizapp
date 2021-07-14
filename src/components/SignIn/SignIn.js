@@ -9,7 +9,14 @@ const SignIn = (props) => {
   const [formIsvalid, setFormIsvalid] = useState(false);  
   
   useEffect(()=>{
-    setFormIsvalid(enteredEmail.includes('@') && enteredPassword.length > 6);
+    const identifier = setTimeout(()=>{
+      setFormIsvalid(enteredEmail.includes('@') && enteredPassword.length > 6);
+    },500);
+
+    //Effect Clean Up: (runs before the useEffect function code runs except for the first time) used to avoid too many validation check on every key stroke
+    return ()=>{
+      clearTimeout(identifier);
+    }
   },[enteredEmail, enteredPassword]);
   
   const handleEmailChange = (event) => {

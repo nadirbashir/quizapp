@@ -4,15 +4,6 @@
     margin: 7rem auto;
     padding: 2rem;
 }
-.button{
-    cursor: pointer;
-    border: none;
-    background-color: #4A148C;
-    color: whitesmoke;
-    padding: 0.8rem 2rem;
-    border-radius: 2rem;
-    margin: 0.5rem auto;
-}
 .control{
     margin: 10px 0;
     display: flex;
@@ -26,15 +17,25 @@
     border-radius: 5px;
 }
 .control input:focus{
-    outline-color: #ccc;
+    outline: none;
+  border-color: #4f005f;
+  background: #f6dbfc;
 }
 
 .control.invalid input{
-    background-color: rgba(250, 128, 114, 0.685);
-    outline-color: rgba(250, 128, 114, 0.671);
-    border-color: rgba(250, 128, 114, 0.671);
+    border-color: red;
+    background: #fbdada;
 }
-.control.invalid input:focus{
-    background-color: rgba(250, 128, 114, 0.685);
-    outline-color: rgba(250, 128, 114, 0.671);      
+
+.button{
+    cursor: pointer;
+    border: none;
+    background-color: #4A148C;
+    color: whitesmoke;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    margin: 0.5rem auto;
+}
+.button:active{
+    border: none;
 }

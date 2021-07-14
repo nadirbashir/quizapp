@@ -1,5 +1,26 @@
 .home{
     width: 90%;
-    margin: 7rem auto;
+    margin: 5rem auto;
     padding: 2rem;
+    text-align: center;
+}
+
+.home h2{
+    margin: 0;
+    color: #4A148C;
+    font-size: 4rem;
+    font-weight: lighter;
+}
+
+.button{
+    cursor: pointer;
+    border: none;
+    background-color: #4A148C;
+    color: whitesmoke;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    margin: 0.5rem auto;
+}
+.button:active{
+    border: none;
 }
