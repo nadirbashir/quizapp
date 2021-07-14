@@ -1,11 +1,12 @@
 import React from "react";
-import { Card } from "../UI/Card/Card.js";
 import classes from "./Home.module.css";
 const Home = (props) => {
   return (
-    <Card className={classes.home}>
-      <h2>Home Page</h2>
-    </Card>
+    <div className={classes.home}>
+      <h2>Quiz Application</h2>
+      <p></p>
+      <button className={classes.button}>Start</button>
+    </div>
   );
 };
 export default Home;
