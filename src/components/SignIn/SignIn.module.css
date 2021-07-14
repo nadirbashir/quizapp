@@ -1,7 +1,7 @@
 .login{
     width: 90%;
     max-width: 40rem;
-    margin: 2rem auto;
+    margin: 7rem auto;
     padding: 2rem;
 }
 .button{
@@ -20,10 +20,21 @@
     flex-direction: column;
 }
 .control input{
+    height: 2rem;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 .control input:focus{
     outline-color: #ccc;
+}
+
+.control.invalid input{
+    background-color: rgba(250, 128, 114, 0.685);
+    outline-color: rgba(250, 128, 114, 0.671);
+    border-color: rgba(250, 128, 114, 0.671);
+}
+.control.invalid input:focus{
+    background-color: rgba(250, 128, 114, 0.685);
+    outline-color: rgba(250, 128, 114, 0.671);      
 }

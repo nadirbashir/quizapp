@@ -1,0 +1,27 @@
+.nav-bar ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar li{
+    margin: 0;
+    margin-left: 2rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.nav-bar button{
+    outline: none;
+    cursor: pointer;
+    padding: 1rem 3rem;
+    background: #ba00e5;
+  border: 1px solid #ba00e5;
+  font-size: 1rem;
+    font-weight: bold;
+  border-radius: 25px;
+  color: white;
+}

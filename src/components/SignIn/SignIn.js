@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "../UI/Card/Card";
 import classes from "./SignIn.module.css";
 const SignIn = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const [emailInvalid, setEmailInvalid ]=useState();
+  const [passwordInvalid, setPasswordInValid ]=useState();
+  const [formIsvalid, setFormIsvalid] = useState(false);  
+  
+  useEffect(()=>{
+    setFormIsvalid(enteredEmail.includes('@') && enteredPassword.length > 6);
+  },[enteredEmail, enteredPassword]);
+  
   const handleEmailChange = (event) => {
     setEnteredEmail(event.target.value);
   };
   const handlePasswordChange = (event) => {
     setEnteredPassword(event.target.value);
   };
+
+  const handleInvalidEmail = () =>{
+    setEmailInvalid(!enteredEmail.includes('@'));
+  }
+
+  const handleInvalidPassword = () =>{
+    setPasswordInValid(enteredPassword.length < 6);
+  }
+
   const submitHandler = (event) => {
     event.preventDefault();
-    if (enteredEmail.trim().length === 0) {
-      alert("please enter a valid email");
-    } else if (enteredPassword.length < 4) {
-      alert("password must contain atleast 4 character");
-    } else {
+    if(formIsvalid){
+      props.onLogin(enteredEmail, enteredPassword);
       setEnteredEmail("");
       setEnteredPassword("");
     }
@@ -25,26 +39,30 @@ const SignIn = (props) => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler} >
-        <div className={classes.control}>
-        <label>Enter Email </label>
+        <div className={`${classes.control} ${emailInvalid ? classes.invalid : ""}`}>
+        <label htmlFor="email">Enter Email </label>
         <input
+          id="email"
           value={enteredEmail}
           type="email"
           placeholder="abc@example.com"
           onChange={handleEmailChange}
+          onBlur={handleInvalidEmail}
         />
         </div>
-        <div className={classes.control}>
-        <label>Enter Password </label>
+        <div className={`${classes.control} ${passwordInvalid ? classes.invalid : ""}`}>
+        <label htmlFor="password">Enter Password </label>
         <input
+          id="password"
           value={enteredPassword}
           type="password"
           placeholder="Password"
           onChange={handlePasswordChange}
+          onBlur={handleInvalidPassword}
         />
         </div>
         <div className={classes.control}>
-        <button type="submit" className={classes.button}>
+        <button type="submit" className={classes.button} disabled={!formIsvalid}>
           Login
         </button>
         </div>
