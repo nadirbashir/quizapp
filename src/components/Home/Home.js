@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Home.module.css";
+import Intro from "./Intro";
+import Quiz from "./Quiz";
 const Home = (props) => {
+  const [isStart, setIsStart] = useState()
+
+  const onStart = () =>{
+    localStorage.setItem("quizStart","1");
+    let quiz = localStorage.getItem("quizStart");
+    setIsStart(quiz);
+  }
+  const questionSubmitHandler = () =>{
+
+  }
   return (
     <div className={classes.home}>
-      <h2>Quiz Application</h2>
-      <p></p>
-      <button className={classes.button}>Start</button>
+      {!isStart && <Intro onStart={onStart} />}
+    {isStart && <Quiz questionSubmitHandler={questionSubmitHandler}/> }
     </div>
   );
 };

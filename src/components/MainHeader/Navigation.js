@@ -6,7 +6,7 @@ const Navigation = (props) =>{
         <nav className={classes['nav-bar']}>
             <ul>
                 {props.isLoggedIn && <li>Admin</li>}
-                {props.isLoggedIn && <li><button onClick={props.onLogout}>Logout</button></li>}
+                {props.isLoggedIn && <li><button onClick={props.onLogout}>Logout</button></li>} 
             </ul>
         </nav>
     );

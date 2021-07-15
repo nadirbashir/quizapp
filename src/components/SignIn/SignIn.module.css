@@ -1,16 +1,17 @@
 .login{
     width: 90%;
-    max-width: 40rem;
+    max-width: 30rem;
     margin: 7rem auto;
     padding: 2rem;
 }
 .control{
     margin: 10px 0;
     display: flex;
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 .control input{
+    width: 20rem;
     height: 2rem;
     padding: 5px;
     border: 1px solid #ccc;
@@ -30,12 +31,28 @@
 .button{
     cursor: pointer;
     border: none;
-    background-color: #4A148C;
+    background-color: #283593;
     color: whitesmoke;
     padding: 0.8rem 2rem;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     margin: 0.5rem auto;
 }
 .button:active{
     border: none;
+}
+.button:hover{
+    background: #4A148C ;
+}
+
+@media (max-width: 768px) {
+    .login{
+        max-width: 18rem;
+    }
+    .control{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .control input{
+        width: 17rem;
+    }
 }
