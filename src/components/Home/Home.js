@@ -10,13 +10,10 @@ const Home = (props) => {
     let quiz = localStorage.getItem("quizStart");
     setIsStart(quiz);
   }
-  const questionSubmitHandler = () =>{
-
-  }
   return (
     <div className={classes.home}>
       {!isStart && <Intro onStart={onStart} />}
-    {isStart && <Quiz questionSubmitHandler={questionSubmitHandler}/> }
+    {isStart && <Quiz /> }
     </div>
   );
 };

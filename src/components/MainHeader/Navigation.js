@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Navigation.module.css'
 const Navigation = (props) =>{
-    console.log(props.isLoggedIn)
+    // console.log(props.isLoggedIn)
     return (
         <nav className={classes['nav-bar']}>
             <ul>
