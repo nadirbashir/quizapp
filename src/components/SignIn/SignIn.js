@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card } from "../UI/Card/Card";
+import Card from "../UI/Card/Card";
+
 import classes from "./SignIn.module.css";
 const SignIn = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");

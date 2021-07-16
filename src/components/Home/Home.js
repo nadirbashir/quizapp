@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./Home.module.css";
 import Intro from "./Intro";
 import Quiz from "./Quiz";
+import Result from "./Result"
 
 const arrayOfQuiz = [
   {
@@ -71,12 +72,14 @@ const arrayOfQuiz = [
     correctChoice: "Yes",
   },
 ];
+
 const Home = (props) => {
   const [isStart, setIsStart] = useState();
+  const [isEnd, setIsEnd] = useState();
 
   const [question, setQuestion] = useState(0);
   const [score,setScore] = useState(0)
-  console.log(score);
+  
   const questionSubmitHandler = (event) =>{
     event.preventDefault();
     let form = document.querySelector("form");
@@ -89,7 +92,10 @@ const Home = (props) => {
     setScore(score + 10);
   }
   if(question === arrayOfQuiz.length-1){
-      setQuestion(0);
+    localStorage.setItem("quizEnd","1");
+    setIsEnd(localStorage.getItem("quizEnd"));
+    setIsStart("");
+    setQuestion(0);
     }else{
         setQuestion(question+1);
     }
@@ -97,13 +103,14 @@ const Home = (props) => {
 
   const onStart = () =>{
     localStorage.setItem("quizStart","1");
-    let quiz = localStorage.getItem("quizStart");
-    setIsStart(quiz);
+    let quizStart = localStorage.getItem("quizStart");
+    setIsStart(quizStart);
   }
   return (
     <div className={classes.home}>
-      {!isStart && <Intro onStart={onStart} />}
+      {!isStart && !isEnd && <Intro onStart={onStart} />}
     {isStart && <Quiz question={question} onQuestionSubmit={questionSubmitHandler} arrayOfQuiz={arrayOfQuiz}/> }
+    {isEnd && <Result score={score} setIsEnd={setIsEnd} />}
     </div>
   );
 };
