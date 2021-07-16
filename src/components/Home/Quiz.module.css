@@ -1,0 +1,31 @@
+.quiz{
+    width: 70%;
+    margin: 0 auto;
+   padding: 2rem; 
+   text-align: left;
+}
+.choice-box{
+    margin-top: 1rem;
+    padding-left: 2rem;
+    line-height: 2rem;
+}
+
+.choice-box label{
+    padding-left: 1rem;
+}
+.button{
+    text-align: right;
+    margin-right: 4rem;
+}
+.button button{
+    cursor: pointer;
+    border: none;
+    background-color: #283593;
+    color: whitesmoke;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem auto;
+}
+.button button:hover{
+    background: #4A148C;
+}
