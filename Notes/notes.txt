@@ -1,0 +1,17 @@
+const onChange = (event, name) => {
+setSomeValue({...someValue, [name]: event.target.value})
+}
+{
+'email': 1
+}
+Touqeer Hussain23:04
+const name = 'email'
+{
+[name]: 'tt'
+}
+Touqeer Hussain23:06
+{onLogin}
+Touqeer Hussain23:07
+const onChange = (event) => {
+setSomeValue({...someValue, [event.target.name]: event.target.value})
+}

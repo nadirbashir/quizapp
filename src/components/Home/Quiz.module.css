@@ -1,9 +1,18 @@
 .quiz{
     width: 70%;
     margin: 0 auto;
-   padding: 2rem; 
-   text-align: left;
+    padding: 3rem; 
+    text-align: left;
+    position: relative;
 }
+.timer{
+    position: absolute;
+    top: 0.8rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    color: #283593;
+}
+
 .choice-box{
     margin-top: 1rem;
     padding-left: 2rem;

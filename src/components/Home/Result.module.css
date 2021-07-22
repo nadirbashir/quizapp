@@ -1,0 +1,17 @@
+.result{
+    padding: 2rem;
+}
+.result h2{
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: lighter;
+    color: #4A148C
+}
+.result button{
+    cursor: pointer;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: #09af00;
+    color: white;
+}

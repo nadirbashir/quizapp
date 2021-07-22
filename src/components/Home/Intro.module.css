@@ -1,5 +1,5 @@
-h2{
-    margin: 0;
+.intro h2{
+    margin-bottom: 2rem;
     color: #4A148C;
     font-size: 4rem;
     font-weight: lighter;

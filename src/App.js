@@ -3,32 +3,25 @@ import SignIn from "./components/SignIn/SignIn";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import Home from "./components/Home/Home";
+import { loginHandler, logoutHandler } from "./util/auth";
 
-function App() {
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(()=>{
-    if(localStorage.getItem("isLoggedIn") === "1"){
+  
+  useEffect(() => {
+    if (localStorage.getItem("isLoggedIn") === 1) {
       setIsLoggedIn(true);
     }
-  },[]);
+  }, []);
 
-  const loginHandler = (email,password) => {
-    localStorage.setItem("isLoggedIn","1");
-    setIsLoggedIn(true);
-  };
-
-  const logoutHandler = () => {
-    localStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
-  }
   return (
-    <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+    <>
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={()=>logoutHandler(setIsLoggedIn)} />
       <main>
-        {!isLoggedIn && <SignIn onLogin={loginHandler} />}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
+        {!isLoggedIn && <SignIn onLogin={() => loginHandler(setIsLoggedIn)} />}
+        {isLoggedIn && <Home onLogout={() => logoutHandler(setIsLoggedIn)} />}
       </main>
-    </React.Fragment>
+    </>
   );
-}
+};
 export default App;
