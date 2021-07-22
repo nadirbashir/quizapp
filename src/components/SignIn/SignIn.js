@@ -1,76 +1,70 @@
 import { useEffect, useState } from "react";
-import Card from "../UI/Card/Card";
+import  Card  from "../UI/Card/Card";
+import { onChange, submitHandler } from "../../util/auth";
 
 import classes from "./SignIn.module.css";
 const SignIn = (props) => {
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [emailInvalid, setEmailInvalid ]=useState();
-  const [passwordInvalid, setPasswordInValid ]=useState();
-  const [formIsvalid, setFormIsvalid] = useState(false);  
-  
+  const [user, setUser] = useState({
+    enteredEmail: "",
+    enteredPassword: "",
+  });
+  const [validation, setValidation] = useState({
+    email: false,
+    password: false,
+    form: false,
+  });
+
   useEffect(()=>{
     const identifier = setTimeout(()=>{
-      setFormIsvalid(enteredEmail.includes('@') && enteredPassword.length > 6);
+      setValidation({...validation, form: user.enteredEmail.includes('@') && user.enteredPassword.length > 6});
     },500);
 
     //Effect Clean Up: (runs before the useEffect function code runs except for the first time) used to avoid too many validation check on every key stroke
+
     return ()=>{
       clearTimeout(identifier);
     }
-  },[enteredEmail, enteredPassword]);
-  
-  const handleEmailChange = (event) => {
-    setEnteredEmail(event.target.value);
-  };
-  const handlePasswordChange = (event) => {
-    setEnteredPassword(event.target.value);
-  };
+  },[user]);
+    
 
   const handleInvalidEmail = () =>{
-    setEmailInvalid(!enteredEmail.includes('@'));
+    setValidation({...validation, email:!user.enteredEmail.includes('@')});
   }
 
   const handleInvalidPassword = () =>{
-    setPasswordInValid(enteredPassword.length < 6);
+    setValidation({...validation, password: user.enteredPassword.length < 6});
   }
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    if(formIsvalid){
-      props.onLogin(enteredEmail, enteredPassword);
-      setEnteredEmail("");
-      setEnteredPassword("");
-    }
-  };
 
   return (
     <Card className={classes.login}>
-      <form onSubmit={submitHandler} >
-        <div className={`${classes.control} ${emailInvalid ? classes.invalid : ""}`}>
+      <form onSubmit={(event) => submitHandler(event,validation, props.onLogin, user, setUser)} >
+        <div className={`${classes.control} ${validation.email ? classes.invalid : ""}`}>
         <label htmlFor="email">Enter Email </label>
         <input
           id="email"
-          value={enteredEmail}
+          name="enteredEmail"
+          value={user.enteredEmail}
           type="email"
           placeholder="abc@example.com"
-          onChange={handleEmailChange}
+          onChange={(event) => onChange(event,setUser,user)}
           onBlur={handleInvalidEmail}
         />
         </div>
-        <div className={`${classes.control} ${passwordInvalid ? classes.invalid : ""}`}>
+        <div className={`${classes.control} ${validation.password ? classes.invalid : ""}`}>
         <label htmlFor="password">Enter Password </label>
         <input
           id="password"
-          value={enteredPassword}
+          name="enteredPassword"
+          value={user.enteredPassword}
           type="password"
           placeholder="Password"
-          onChange={handlePasswordChange}
+          onChange={(event) => onChange(event,setUser,user)}
           onBlur={handleInvalidPassword}
         />
         </div>
         <div className={classes.control}>
-        <button type="submit" className={classes.button} disabled={!formIsvalid}>
+        <button type="submit" className={classes.button} disabled={!validation.form}>
           Login
         </button>
         {/* <button type="submit" className={classes.button}>
