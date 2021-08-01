@@ -1,4 +1,4 @@
-import Card from "../UI/Card/Card";
+import Card from "../../components/UI/Card/Card";
 import classes from "./Quiz.module.css";
 
 const Quiz = (props) => {

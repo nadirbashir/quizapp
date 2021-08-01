@@ -1,5 +1,6 @@
 
 import firebase from 'firebase/app';
+import 'firebase/database';
 import 'firebase/auth';
   
 const firebaseConfig = {
@@ -12,6 +13,6 @@ const firebaseConfig = {
     measurementId: "G-GWPZ59FTW7"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
 
-  export default firebase;
+    export default firebase.initializeApp(firebaseConfig);
+  

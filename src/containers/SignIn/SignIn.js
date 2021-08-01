@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "../UI/Card/Card";
+import Card from "../../components/UI/Card/Card";
 import { onChange, submitHandler, onBlur } from "../../util/auth";
 
 import classes from "./SignIn.module.css";
@@ -34,7 +34,7 @@ const SignIn = (props) => {
     <Card className={classes.login}>
       <form
         onSubmit={(event) =>
-          submitHandler(event, validation, props.onLogin, user, setUser)
+          submitHandler(event, validation, props.setLogin, user, setUser)
         }
       >
         <div
