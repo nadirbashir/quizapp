@@ -3,15 +3,13 @@ import SignIn from "./containers/SignIn/SignIn";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import Home from "./containers/Home/Home";
-import { loginHandler, logoutHandler } from "./util/auth";
+import {logoutHandler } from "./util/auth";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   useEffect(() => {
-    if (localStorage.getItem("isLoggedIn") === 1) {
-      setIsLoggedIn(true);
-    }
+    localStorage.getItem("isLoggedIn") === 1 && setIsLoggedIn(true);
   }, []);
 
   return (
