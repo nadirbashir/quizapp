@@ -2,9 +2,17 @@ import firebase from "../config/firebase.js";
 
 // export const loginHandler = (setLogin) => {};
 
-export const logoutHandler = (setLogin) => {
-  localStorage.removeItem("isLoggedIn");
-  setLogin(false);
+export const logoutHandler = (setLogin, history) => {
+  firebase.auth().signOut()
+    .then(function () {
+      // Sign-out successful.
+      history.push("/");
+      localStorage.removeItem("isLoggedIn");
+      setLogin(false);
+    })
+    .catch(function (error) {
+      // An error happened.
+    });
 };
 
 export const onChange = (event, setUser, user) => {
@@ -20,7 +28,14 @@ export const onBlur = (event, validation, setValidation, user) => {
   );
 };
 
-export const submitHandler = (event, validation, setLogin, user, setUser) => {
+export const submitHandler = (
+  event,
+  validation,
+  setLogin,
+  user,
+  setUser,
+  history
+) => {
   event.preventDefault();
   validation.form &&
     firebase
@@ -31,7 +46,9 @@ export const submitHandler = (event, validation, setLogin, user, setUser) => {
         var fbuser = userCredential.user;
         console.log("user", fbuser);
         // onLogin(user.enteredEmail, user.enteredPassword);
-        localStorage.setItem("isLoggedIn", 1);
+        localStorage.setItem("isLoggedIn", JSON.stringify(fbuser));
+        // event.props.history.push('/home');
+        history.push("/home");
         setLogin(true);
         setUser({ ...user, enteredEmail: "" });
         setUser({ ...user, enteredPassword: "" });

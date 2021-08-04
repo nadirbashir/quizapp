@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom"
 import Card from "../../components/UI/Card/Card";
 import { onChange, submitHandler, onBlur } from "../../util/auth";
 
@@ -25,16 +26,19 @@ const SignIn = (props) => {
 
     //Effect Clean Up: (runs before the useEffect function code runs except for the first time) used to avoid too many validation check on every key stroke
 
+    
     return () => {
       clearTimeout(identifier);
     };
   }, [user]);
+  
+  const history = useHistory();
 
   return (
     <Card className={classes.login}>
       <form
         onSubmit={(event) =>
-          submitHandler(event, validation, props.setLogin, user, setUser)
+          submitHandler(event, validation, props.setLogin, user, setUser, history)
         }
       >
         <div

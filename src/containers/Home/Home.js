@@ -4,7 +4,7 @@ import Intro from "./Intro";
 import Quiz from "./Quiz";
 import Result from "./Result";
 import { arrayOfQuiz } from "../../constants/quiz";
-const Home = (props) => {
+export const Home = (props) => {
   const [isStart, setIsStart] = useState();
   const [isEnd, setIsEnd] = useState();
 
@@ -53,4 +53,4 @@ const Home = (props) => {
     </div>
   );
 };
-export default Home;
+// export default Home;

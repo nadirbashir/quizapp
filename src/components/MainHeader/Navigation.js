@@ -1,7 +1,9 @@
 import React from 'react'
 import classes from './Navigation.module.css'
+// import {useHistory} from 'react-router-dom'
 const Navigation = (props) =>{
     // console.log(props.isLoggedIn)
+    // const history = useHistory();
     return (
         <nav className={classes['nav-bar']}>
             <ul>
