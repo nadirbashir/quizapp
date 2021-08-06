@@ -15,3 +15,12 @@ Touqeer Hussain23:07
 const onChange = (event) => {
 setSomeValue({...someValue, [event.target.name]: event.target.value})
 }
+
+
+learn use context and signIn flow
+https://prod.liveshare.vsengsaas.visualstudio.com/join?73D25D49DBA42E1F04F756638650117E0FF4
+You22:32
+there?
+Touqeer Hussain22:38
+https://levelup.gitconnected.com/use-authentication-to-protect-react-routes-fc2d812ad770
+https://dev.to/olumidesamuel_/implementing-protected-route-and-authentication-in-react-js-3cl4

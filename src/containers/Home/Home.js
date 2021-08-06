@@ -4,6 +4,7 @@ import Intro from "./Intro";
 import Quiz from "./Quiz";
 import Result from "./Result";
 import { arrayOfQuiz } from "../../constants/quiz";
+
 export const Home = (props) => {
   const [isStart, setIsStart] = useState();
   const [isEnd, setIsEnd] = useState();
