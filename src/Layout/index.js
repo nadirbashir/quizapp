@@ -7,9 +7,12 @@ import { logoutHandler } from "../util/auth";
 import React, { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
+import { AuthContext } from "../context/auth-context";
+
 
 
 export const Layout = () => {
+  const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") !== null ? true : false);
     useEffect(()=>{
       localStorage.getItem("isLoggedIn") && setIsLoggedIn(true);
@@ -17,13 +20,13 @@ export const Layout = () => {
           console.log(history)
                 history.replace("/home");
         }
-  }, [isLoggedIn]);
+  }, [isLoggedIn,history]);
 
-  const history = useHistory();
   return (
-    <div>
+    <AuthContext.Provider value={{
+      isLoggedIn: isLoggedIn
+    }}>
         <MainHeader
-        isLoggedIn={isLoggedIn}
         onLogout={() => logoutHandler(setIsLoggedIn, history)}
       />
         <main>
@@ -36,6 +39,6 @@ export const Layout = () => {
           </Route>
         </Switch>
       </main>
-    </div>
+    </AuthContext.Provider>
   );
 };

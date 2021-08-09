@@ -5,7 +5,7 @@ export const MainHeader = (props) => {
   return (
     <header className={classes['main-header']}>
       <h1>Quiz App</h1>
-      <Navigation isLoggedIn={props.isLoggedIn} onLogout={props.onLogout} />
+      <Navigation onLogout={props.onLogout} />
     </header>
   );
 };

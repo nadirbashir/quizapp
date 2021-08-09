@@ -31,7 +31,7 @@ const SignIn = (props) => {
     return () => {
       clearTimeout(identifier);
     };
-  }, [user]);
+  }, [user, validation  ]);
   
   const history = useHistory();
 
