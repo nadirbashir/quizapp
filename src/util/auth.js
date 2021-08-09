@@ -46,10 +46,7 @@ export const submitHandler = (
       .then((userCredential) => {
         // Signed in
         var fbuser = userCredential.user;
-        console.log("user", fbuser);
-        // onLogin(user.enteredEmail, user.enteredPassword);
         localStorage.setItem("isLoggedIn", true);
-        // event.props.history.push('/home');
         history.replace("/home");
         setLogin(true);
         setUser({ ...user, enteredEmail: "" });

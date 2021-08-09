@@ -17,25 +17,23 @@ export const Layout = () => {
     useEffect(()=>{
       localStorage.getItem("isLoggedIn") && setIsLoggedIn(true);
       if(isLoggedIn && history.location.pathname === "/"){
-          console.log(history)
                 history.replace("/home");
         }
   }, [isLoggedIn,history]);
 
   return (
     <AuthContext.Provider value={{
-      isLoggedIn: isLoggedIn
+      isLoggedIn: isLoggedIn,
+      onLogout: () => logoutHandler(setIsLoggedIn,history)
     }}>
-        <MainHeader
-        onLogout={() => logoutHandler(setIsLoggedIn, history)}
-      />
+        <MainHeader />
         <main>
         <Switch>
           <Route path="/" exact>
             <SignIn setLogin={setIsLoggedIn} />
           </Route>
           <Route path="/home">
-           {isLoggedIn ? <Home onLogout={() => logoutHandler(setIsLoggedIn, history)} /> : <Redirect to="/" />} 
+           {isLoggedIn ? <Home /> : <Redirect to="/" />} 
           </Route>
         </Switch>
       </main>
