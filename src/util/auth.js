@@ -3,10 +3,12 @@ import firebase from "../config/firebase.js";
 // export const loginHandler = (setLogin) => {};
 
 export const logoutHandler = (setLogin, history) => {
-  firebase.auth().signOut()
+  firebase
+    .auth()
+    .signOut()
     .then(function () {
       // Sign-out successful.
-      history.push("/");
+      history.replace("/");
       localStorage.removeItem("isLoggedIn");
       setLogin(false);
     })
@@ -46,9 +48,9 @@ export const submitHandler = (
         var fbuser = userCredential.user;
         console.log("user", fbuser);
         // onLogin(user.enteredEmail, user.enteredPassword);
-        localStorage.setItem("isLoggedIn", JSON.stringify(fbuser));
+        localStorage.setItem("isLoggedIn", true);
         // event.props.history.push('/home');
-        history.push("/home");
+        history.replace("/home");
         setLogin(true);
         setUser({ ...user, enteredEmail: "" });
         setUser({ ...user, enteredPassword: "" });
