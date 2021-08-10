@@ -31,7 +31,7 @@ const SignIn = (props) => {
     return () => {
       clearTimeout(identifier);
     };
-  }, [user, validation  ]);
+  }, [user]);
   
   const history = useHistory();
 
@@ -54,8 +54,8 @@ const SignIn = (props) => {
             value={user.enteredEmail}
             type="email"
             placeholder="abc@example.com"
-            onChange={(event) => onChange(event, setUser, user)}
-            onBlur={(event) => onBlur(event,validation, setValidation, user)}
+            onChange={(event) => onChange(event, setUser, user,validation,setValidation)}
+            // onBlur={(event) => onBlur(event,validation, setValidation, user)}
           />
         </div>
         <div
@@ -70,8 +70,8 @@ const SignIn = (props) => {
             value={user.enteredPassword}
             type="password"
             placeholder="Password"
-            onChange={(event) => onChange(event, setUser, user)}
-            onBlur={(event) => onBlur(event,validation, setValidation, user)}
+            onChange={(event) => onChange(event, setUser, user, validation,setValidation)}
+            // onBlur={(event) => onBlur(event,validation, setValidation, user)}
           />
         </div>
         <div className={classes.control}>

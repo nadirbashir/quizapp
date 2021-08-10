@@ -17,11 +17,8 @@ export const logoutHandler = (setLogin, history) => {
     });
 };
 
-export const onChange = (event, setUser, user) => {
+export const onChange = (event, setUser, user, validation, setValidation) => {
   setUser({ ...user, [event.target.name]: event.target.value });
-};
-
-export const onBlur = (event, validation, setValidation, user) => {
   let inpName = event.target.name;
   setValidation(
     inpName === "enteredEmail"
@@ -29,6 +26,10 @@ export const onBlur = (event, validation, setValidation, user) => {
       : { ...validation, password: user.enteredPassword.length < 6 }
   );
 };
+
+// export const onBlur = (event, validation, setValidation, user) => {
+
+// };
 
 export const submitHandler = (
   event,
